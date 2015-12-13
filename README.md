@@ -5,7 +5,7 @@ as an example plugin package and can be used as starting point to create your ow
 
 Please visit http://gionkunz.github.io/chartist-js/plugins.html for more information.
 
-## Download 
+## Download
 The easiest way to get started, using Bower
 ```
 bower install chartist-plugin-pointlabels --save
@@ -22,6 +22,8 @@ var defaultOptions = {
   },
   textAnchor: 'middle',
   labelInterpolationFnc: Chartist.noop
+  labelFormat: Chartist.noop,
+  hideX: false
 };
 ```
 
@@ -38,7 +40,8 @@ var chart = new Chartist.Line('.ct-chart', {
   plugins: [
     ctPointLabels({
       textAnchor: 'middle',
-      labelInterpolationFnc: function(value) {return '$' + value.toFixed(2)}
+      labelFormat: function (value) { return '$' + value.toFixed(2) },
+      hideX: true
     })
   ]
 });
