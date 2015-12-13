@@ -1,4 +1,9 @@
 
+0.0.6 / 2015-12-12
+==================
+
+  * remove label format; use labelInterporation from original api
+
 0.0.5 / 2015-12-12
 ==================
 
