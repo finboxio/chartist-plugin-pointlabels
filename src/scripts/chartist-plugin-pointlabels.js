@@ -15,7 +15,8 @@
     textAnchor: 'middle',
     labelInterpolationFnc: Chartist.noop,
     labelFormat: Chartist.noop,
-    hideX: false
+    hideXLabel: false,
+    hideAllLabels: false
   };
 
   Chartist.plugins = Chartist.plugins || {};
@@ -24,19 +25,19 @@
     options = Chartist.extend({}, defaultOptions, options);
 
     return function ctPointLabels(chart) {
-      if(chart instanceof Chartist.Line || chart instanceof Chartist.Bar) {
+      if(!options.hideAllLabels && chart instanceof Chartist.Line) {
         chart.on('draw', function(data) {
           if(data.type === 'point') {
             data.group.elem('text', {
               x: data.x + options.labelOffset.x,
               y: data.y + options.labelOffset.y,
               style: 'text-anchor: ' + options.textAnchor
-            }, options.labelClass).text(options.labelInterpolationFnc((options.hideX || data.value.x === undefined) ? data.value.y : data.value.x + ', ' + data.value.y));
+            }, options.labelClass).text(options.labelInterpolationFnc((options.hideXLabel || data.value.x === undefined) ? data.value.y : data.value.x + ', ' + data.value.y));
           }
         });
       }
 
-      if(chart instanceof Chartist.Bar) {
+      if(!options.hideAllLabels && chart instanceof Chartist.Bar) {
         chart.on('draw', function (data) {
           var barHorizontalCenter, barVerticalCenter, label, value;
           if (data.type === 'bar') {

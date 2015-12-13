@@ -21,8 +21,9 @@ var defaultOptions = {
     y: -10
   },
   textAnchor: 'middle',
-  labelInterpolationFnc: Chartist.noop
-  hideX: false
+  labelInterpolationFnc: Chartist.noop,
+  hideX: false,
+  hideAll: false
 };
 ```
 
