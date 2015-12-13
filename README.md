@@ -22,7 +22,6 @@ var defaultOptions = {
   },
   textAnchor: 'middle',
   labelInterpolationFnc: Chartist.noop
-  labelFormat: Chartist.noop,
   hideX: false
 };
 ```
@@ -40,7 +39,7 @@ var chart = new Chartist.Line('.ct-chart', {
   plugins: [
     ctPointLabels({
       textAnchor: 'middle',
-      labelFormat: function (value) { return '$' + value.toFixed(2) },
+      labelInterpolationFnc: function (value) { return '$' + value.toFixed(2) },
       hideX: true
     })
   ]

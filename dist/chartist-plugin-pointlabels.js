@@ -61,7 +61,7 @@
               value = data.element.attr('ct:value');
               if (value !== '0') {
                 label = new Chartist.Svg('text');
-                label.text(options.labelFormat(value));
+                label.text(options.labelInterpolationFnc(value));
                 label.addClass('ct-barlabel');
                 label.attr({
                   x: barHorizontalCenter,
